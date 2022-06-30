@@ -1,5 +1,5 @@
-import React from 'react'
 import "./styles.css"
+import CarWidget from "../CarWidget/CarWidget";
 
 const NavBar = () => {
     return <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -24,6 +24,7 @@ const NavBar = () => {
             <a class="nav-link" href="#">Nosotros</a>
           </li>
         </ul>
+        <CarWidget/>
       </div>
     </div>
   </nav>

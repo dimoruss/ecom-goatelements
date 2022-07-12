@@ -10,12 +10,32 @@ const ItemListContainer = ({greeting}) => {
     }
     //console.log(products);
     
-    const [loading, setLoading] = useState(true);
+    const [loading, setProducts] = useState(true);
 
-    useEffect(() => {
-        setTimeout(setLoading, 2000, false);
-        console.log('useEffect');
-    }, []);
+    const task = new Promise((resolve, reject) =>{
+        let prePromise = true;
+        setTimeout(()=>{
+            if (prePromise){
+                resolve(products);
+            }else{
+                reject('no hay datos')
+            }
+        }, 2000)
+    })
+
+    useEffect(()=>{
+        task
+        .then((products)=>{
+            setProducts(products)
+        })
+        .cach((err)=>{
+            console.log(err);
+        })
+    })
+    //useEffect(() => {
+    //    setTimeout(setLoading, 2000, false);
+    //    console.log('useEffect');
+    //}, []);
     
     return (
         <div>
@@ -26,4 +46,4 @@ const ItemListContainer = ({greeting}) => {
         )
     }
 
-export default ItemListContainer;
+export default ItemListContainer;//
